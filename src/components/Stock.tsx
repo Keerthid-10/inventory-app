@@ -58,14 +58,14 @@ const handleDelete = async(item:StockItem) =>{
 const handlePurchaseClick = (item:StockItem) =>{
     setSelectedItem(item);
     setShowPurchaseForm(true);
-     setPurchaseQty('');
+    setPurchaseQty('');
     setPurchaseError('');
 }
 //cancel for purchase
 const handleCancelPurchase = ()=>{
     setShowPurchaseForm(false);
     setSelectedItem(null);
-     setPurchaseQty('');
+    setPurchaseQty('');
     setPurchaseError('');
 }
 // function to validate input in purchase
