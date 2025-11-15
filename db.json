@@ -1,0 +1,47 @@
+{
+  "stocks": [
+    {
+      "id": "1",
+      "name": "AA Batteries (pack of 8)",
+      "category": "Electronics",
+      "description": "High-performance alkaline batteries",
+      "availableQty": 50,
+      "minQty": 10,
+      "unitPrice": 4.99,
+      "supplier": "PowerMax Inc.",
+      "lastUpdated": "2025-01-10"
+    },
+    {
+      "id": "2",
+      "name": "Printer Paper A4 (500 sheets)",
+      "category": "Stationery",
+      "description": "Premium white paper for printing",
+      "availableQty": 5,
+      "minQty": 10,
+      "unitPrice": 7.5,
+      "supplier": "Office Supplies Co.",
+      "lastUpdated": "2025-01-09"
+    },
+    {
+      "id": "3",
+      "name": "USB-C Cable (2m)",
+      "category": "Electronics",
+      "description": "Fast charging USB-C cable",
+      "availableQty": 25,
+      "minQty": 5,
+      "unitPrice": 12.99,
+      "supplier": "Tech Cables Ltd.",
+      "lastUpdated": "2025-01-11"
+    },
+    {
+      "id": "faef",
+      "name": "Mango",
+      "category": "Watch",
+      "description": "arszrdxfcgvhbj;",
+      "availableQty": 65,
+      "minQty": "200",
+      "unitPrice": "20",
+      "supplier": "fgdh"
+    }
+  ]
+}
