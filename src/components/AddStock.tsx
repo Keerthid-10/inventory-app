@@ -133,7 +133,16 @@ const AddStock : React.FC = () =>{
     }
     const handleSubmit = async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
-        await axios.post("http://localhost:3001/stocks",formData)
+        const newItem = {
+            name: formData.name,
+            category: formData.category,
+            description: formData.description,
+            availableQty: Number(formData.availableQty),  // Convert to number
+            minQty: Number(formData.minQty),              // Convert to number
+            unitPrice: Number(formData.unitPrice),        // Convert to number
+            supplier : formData.supplier
+        };
+        await axios.post("http://localhost:3001/stocks",newItem)
         .then(res=>setFormData(res.data))
         .catch(err=> setErrorMsg("cannot upload"))
     }       

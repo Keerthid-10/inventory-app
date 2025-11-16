@@ -32,8 +32,18 @@ const Stock : React.FC =() =>{
 const fetchStock = async()=>{
     try{
         await axios.get("http://localhost:3001/stocks")
-        .then(res=>{setState(res.data);setSuccess("data fetched")})
-        .catch(err=>setError("couldn't fetch data"))
+        .then(res=>{
+        const numericData = res.data.map((item: StockItem) => ({
+            ...item,
+            availableQty: Number(item.availableQty),
+            minQty: Number(item.minQty),
+            unitPrice: Number(item.unitPrice)
+            }));
+            setState(res.data);
+            setSuccess("data fetched");
+        
+    })
+    .catch(err=>setError("couldn't fetch data"))
     }catch(err){
         setError("wrong data");
     }
@@ -100,15 +110,27 @@ const handleSubmit = async (e:FormEvent<HTMLFormElement>) =>{
    
     try{
         const newQty = selectedItem.availableQty - quantity;
-        await axios.patch('http://localhost:3001/stocks/'+selectedItem.id,{
-            availableQty : newQty
-        })
-        .then(res=>{console.log(res.data); setSuccess("Purchase successful! Quantity updated.")})
-        .catch(err=>setPurchaseError("error while updating"));
-    }catch(err){
+
+        await axios.put('http://localhost:3001/stocks/'+selectedItem.id,{
+           ...selectedItem,
+            availableQty : newQty,
+            lastUpdated: new Date().toISOString().split('T')[0]
+        });
+
+        setState(state.map(stock=>
+            stock.id === selectedItem.id ? {...stock,availableQty : newQty} : stock
+        ))
+        setSuccess("Purchase successful! Quantity updated.")
+        setShowPurchaseForm(false);
+        setSelectedItem(null);
+        setPurchaseQty('');
+        setPurchaseError('');
+    }
+    catch(err){
         setPurchaseError('Failed to process patch');
     }
 }
+
 
 
 
@@ -141,25 +163,29 @@ const handleSubmit = async (e:FormEvent<HTMLFormElement>) =>{
                     </thead>
                     <tbody>
                         {state.map((item)=>{
-                            const qty  = item.availableQty <= item.minQty ;
-                            const backgroundColor = qty ? "red" : "";
-                            const cellStyle = {backgroundColor : backgroundColor}
+                            // const qty  = Number(item.availableQty)  >= Number(item.minQty) ;
+                            // const bg = qty ? "red" : "";
+                            // const cellStyle = {backgroundColor : bg}
+                            const isLow = item.availableQty <= item.minQty;
+                            const rowStyle = isLow ? { backgroundColor: "red" } : {};
+                            console.log("QTY CHECK:", item.name, item.availableQty, item.minQty, typeof item.availableQty, typeof item.minQty);
+
                                 return(
                                     <tr key={item.id}>
-                                        <td style={cellStyle}>{item.name}</td>
-                                        <td style={cellStyle}>{item.category}</td>
-                                        <td style={cellStyle}>{item.availableQty}</td> 
-                                        <td style={cellStyle}>{item.minQty}</td>
-                                        <td style={cellStyle}>{item.unitPrice}</td>
-                                        <td style={cellStyle} ><button className="btn btn-primary" onClick={()=> handleEdit(item.id)}>
+                                        <td style={rowStyle}>{item.name}</td>
+                                        <td style={rowStyle}>{item.category}</td>
+                                        <td style={rowStyle}>{item.availableQty}</td> 
+                                        <td style={rowStyle}>{item.minQty}</td>
+                                        <td style={rowStyle}>{item.unitPrice}</td>
+                                        <td style={rowStyle}><button className="btn btn-primary" onClick={()=> handleEdit(item.id)}>
                                             Edit
                                             </button>
                                         </td>
-                                        <td style={cellStyle}><button className="btn btn-primary" onClick={()=> handleDelete(item)}>
+                                        <td style={rowStyle}><button className="btn btn-primary" onClick={()=> handleDelete(item)}>
                                             Delete
                                             </button>
                                         </td>
-                                        <td style={cellStyle}>
+                                        <td style={rowStyle}>
                                             <button  className="btn btn-primary" onClick={()=>handlePurchaseClick(item)}>
                                                 Purchase
                                                 

@@ -38,10 +38,92 @@
       "name": "Mango",
       "category": "Watch",
       "description": "arszrdxfcgvhbj;",
-      "availableQty": 65,
+      "availableQty": 60,
       "minQty": "200",
       "unitPrice": "20",
-      "supplier": "fgdh"
+      "supplier": "fgdh",
+      "lastUpdated": "2025-11-16"
+    },
+    {
+      "id": "d7ee",
+      "name": "qwesdxgfh",
+      "category": "Mobile",
+      "description": "wwrestdhf",
+      "availableQty": "20",
+      "minQty": "2",
+      "unitPrice": "1",
+      "supplier": "dfgcj"
+    },
+    {
+      "id": "d2e4",
+      "name": "xzcxvbc",
+      "category": "Stationery",
+      "description": "dfdghbj",
+      "availableQty": "20",
+      "minQty": "1",
+      "unitPrice": "1",
+      "supplier": "asdfgfg"
+    },
+    {
+      "id": "e4ee",
+      "name": "wqerthy",
+      "category": "Stationery",
+      "description": "werthyj",
+      "availableQty": 100,
+      "minQty": 20,
+      "unitPrice": 4,
+      "supplier": "aesrdg"
+    },
+    {
+      "id": "6008",
+      "name": "wersdgh",
+      "category": "Mobile",
+      "description": "dhgh",
+      "availableQty": 20,
+      "minQty": 50,
+      "unitPrice": 4,
+      "supplier": "eersfg"
+    },
+    {
+      "id": "1548",
+      "name": "NSSDFDGFGNVB",
+      "category": "Stationery",
+      "description": "fdxbc",
+      "availableQty": "20",
+      "minQty": "40",
+      "unitPrice": "3",
+      "supplier": ""
+    },
+    {
+      "id": "a99b",
+      "name": "fddf",
+      "category": "Stationery",
+      "description": "",
+      "availableQty": 100,
+      "minQty": 12,
+      "unitPrice": "40",
+      "supplier": "sddf"
+    },
+    {
+      "id": "214c",
+      "name": "dfdgf",
+      "category": "Stationery",
+      "description": "fhdh",
+      "availableQty": 100,
+      "minQty": 20,
+      "unitPrice": 13,
+      "supplier": "fdgfg",
+      "lastUpdated": "2025-11-16"
+    },
+    {
+      "id": "9ec7",
+      "name": "trrt",
+      "category": "Stationery",
+      "description": "erw",
+      "availableQty": 20,
+      "minQty": 21,
+      "unitPrice": 3,
+      "supplier": "sfdsd"
     }
   ]
 }
